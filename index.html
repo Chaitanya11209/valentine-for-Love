@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- 📱 Mobile Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>For My Love Bhavani 💖</title>
+
+<style>
+
+/* 🍎 iPhone Safari Height Fix */
+html,body{
+  height:100%;
+}
+
+body{
+  min-height:100svh;
+  margin:0;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  font-family:'Segoe UI',sans-serif;
+  text-align:center;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+
+
+/* Stars */
+#stars{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  background:black;
+}
+
+/* Fireworks */
+#fireworks{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* White Text */
+h1,h2,.timer,p,b{
+  color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* App Layout */
+.app{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  max-width:420px;
+  margin:40px auto;
+  overflow:hidden;
+}
+
+/* Header */
+.app-header{
+  background:linear-gradient(135deg,#ff4d6d,#c77dff);
+  padding:18px;
+  font-size:1.4em;
+  font-weight:bold;
+  color:white;
+}
+
+.app-body{
+  padding:25px 20px 30px;
+}
+
+h1{font-size:2.2em;}
+h2{font-size:1.7em;}
+
+/* Timer */
+.timer{
+  margin:15px 0;
+  font-size:1.3em;
+  font-weight:bold;
+  background:rgba(255,255,255,0.25);
+  padding:10px;
+  border-radius:15px;
+}
+
+/* Buttons */
+.btn{
+  margin:6px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  font-size:0.95em;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4d6d,#c77dff);
+  color:white;
+}
+
+.btn:hover{opacity:0.9;}
+
+/* Popup */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  z-index:1000;
+}
+
+.popup-content{
+  background:#ff6f91;
+  padding:25px;
+  border-radius:20px;
+  width:85%;
+  max-width:350px;
+  margin:25% auto;
+  animation:pop 0.5s;
+  color:white;
+}
+
+@keyframes pop{
+  from{transform:scale(0);}
+  to{transform:scale(1);}
+}
+
+/* Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:26px;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Petals */
+.petal{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* Notification */
+.notification{
+  position:fixed;
+  top:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#ff4d6d,#c77dff);
+  color:white;
+  padding:15px 20px;
+  border-radius:15px;
+  width:90%;
+  max-width:380px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  z-index:2000;
+  display:flex;
+  gap:12px;
+  transition:top 0.8s ease;
+  cursor:pointer;
+}
+
+.notification.show{top:15px;}
+
+audio{
+  margin-top:10px;
+  width:90%;
+}
+
+/* Beat Sync */
+.beat{
+  animation:beat 0.6s infinite alternate;
+}
+
+@keyframes beat{
+  from{transform:scale(1);}
+  to{transform:scale(1.03);}
+}
+
+/* Valentine Title */
+.valentine-title{
+  animation:fadeIn 2s ease,glowTitle 3s infinite alternate,floatTitle 4s ease infinite;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes glowTitle{
+  from{text-shadow:0 0 5px #fff;}
+  to{text-shadow:0 0 15px #ff4d6d;}
+}
+
+@keyframes floatTitle{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+  100%{transform:translateY(0);}
+}
+
+/* 📱 Universal Mobile Optimization */
+@media screen and (max-width:768px){
+
+  body{font-size:18px;}
+
+  .app{
+    max-width:96%;
+    margin:12px auto;
+    border-radius:20px;
+  }
+
+  .app-header{
+    font-size:1.2em;
+    padding:14px;
+  }
+
+  .app-body{
+    padding:18px 15px;
+  }
+
+  h1{font-size:2em;}
+  h2{font-size:1.4em;}
+
+  p{font-size:1.1em;}
+
+  .timer{font-size:1.2em;}
+
+  .btn{
+    width:90%;
+    font-size:1.05em;
+    padding:14px;
+    margin:6px auto;
+    display:block;
+  }
+
+  audio{width:100%;}
+
+  .popup-content{
+    margin:35% auto;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Notification -->
+<div class="notification" id="loveNote" onclick="openLoveNote()">
+  <div>💖</div>
+  <div>
+    <b>Chaitanya</b><br>
+    I love you forever, Bhavani ❤️
+  </div>
+</div>
+
+<!-- Background -->
+<canvas id="stars"></canvas>
+<canvas id="fireworks"></canvas>
+
+<!-- App -->
+<div class="app">
+
+<div class="app-header">
+💖 My Love App – Bhavani
+</div>
+
+<div class="app-body">
+
+<h1 class="valentine-title">Happy Valentine’s Day ❤️</h1>
+
+<h2>My Dear Bhavani 💕</h2>
+
+<div class="timer" id="timer"></div>
+
+<p id="typingText"></p>
+
+<p>
+Forever Yours,<br>
+<b>Chaitanya ❤️</b>
+</p>
+
+<button class="btn" onclick="showSurprise()">🎁 Surprise</button>
+<button class="btn" onclick="showProposal()">💍 Proposal</button>
+<button class="btn" onclick="openQuiz()">💖 Love Quiz</button>
+<button class="btn" onclick="openChat()">💬 Love Chat</button>
+
+<audio id="bgMusic" controls loop>
+<source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<p>🎶 Our Song 💖</p>
+
+</div>
+</div>
+
+<!-- Proposal -->
+<div class="popup" id="proposal">
+<div class="popup-content">
+<h2>💍 Bhavani...</h2>
+<p>Will you be my Valentine forever? ❤️</p>
+<button class="btn" onclick="closeProposal()">Yes 😍</button>
+</div>
+</div>
+
+<!-- Quiz -->
+<div class="popup" id="quiz">
+<div class="popup-content">
+
+<h2>💖 Love Quiz</h2>
+
+<p id="question"></p>
+
+<button class="btn" onclick="answer(1)" id="a1"></button><br><br>
+<button class="btn" onclick="answer(2)" id="a2"></button><br><br>
+<button class="btn" onclick="answer(3)" id="a3"></button>
+
+</div>
+</div>
+
+<!-- Chat -->
+<div class="popup" id="chat">
+<div class="popup-content" style="background:#111;">
+
+<h3 style="color:#25D366;">💬 Bhavani</h3>
+
+<div id="chatBox" style="
+background:#000;
+padding:15px;
+height:250px;
+overflow-y:auto;
+border-radius:10px;
+text-align:left;
+font-size:0.9em;">
+</div>
+
+<button class="btn" onclick="closeChat()">Close ❌</button>
+
+</div>
+</div>
+
+<script>
+
+/* Stars */
+const starCanvas=document.getElementById("stars");
+const starCtx=starCanvas.getContext("2d");
+
+function resizeStars(){
+starCanvas.width=window.innerWidth;
+starCanvas.height=window.innerHeight;
+}
+resizeStars();
+window.addEventListener("resize",resizeStars);
+
+const stars=[];
+
+for(let i=0;i<200;i++){
+stars.push({
+x:Math.random()*starCanvas.width,
+y:Math.random()*starCanvas.height,
+r:Math.random()*1.5+0.5,
+s:Math.random()*0.5+0.2
+});
+}
+
+function drawStars(){
+
+starCtx.clearRect(0,0,starCanvas.width,starCanvas.height);
+starCtx.fillStyle="white";
+
+stars.forEach(star=>{
+
+starCtx.beginPath();
+starCtx.arc(star.x,star.y,star.r,0,Math.PI*2);
+starCtx.fill();
+
+star.y+=star.s;
+
+if(star.y>starCanvas.height){
+star.y=0;
+star.x=Math.random()*starCanvas.width;
+}
+
+});
+
+requestAnimationFrame(drawStars);
+}
+drawStars();
+
+/* Fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+class Particle{
+constructor(x,y,c){
+this.x=x;this.y=y;this.c=c;
+this.r=2;this.l=100;
+this.vx=(Math.random()-0.5)*6;
+this.vy=(Math.random()-0.5)*6;
+}
+draw(){
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+ctx.fillStyle=this.c;
+ctx.fill();
+}
+update(){
+this.x+=this.vx;
+this.y+=this.vy;
+this.l--;
+this.r*=0.98;
+}
+}
+
+let particles=[];
+
+function explode(x,y){
+const col=["#ff4d6d","#ffd166","#fff","#ff9a9e"];
+for(let i=0;i<40;i++){
+particles.push(new Particle(x,y,col[Math.floor(Math.random()*4)]));
+}
+}
+
+setInterval(()=>{
+explode(Math.random()*canvas.width,Math.random()*canvas.height/2);
+},2000);
+
+document.addEventListener("click",e=>{
+explode(e.clientX,e.clientY);
+});
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,i)=>{
+p.update();p.draw();
+if(p.l<=0)particles.splice(i,1);
+});
+
+requestAnimationFrame(animate);
+}
+animate();
+
+/* Hearts */
+function createHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(3+Math.random()*4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(createHeart,300);
+
+/* Petals */
+function createPetal(){
+const p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌸";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(5+Math.random()*5)+"s";
+p.style.opacity=Math.random();
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),10000);
+}
+setInterval(createPetal,400);
+
+/* Notification */
+setTimeout(()=>{
+document.getElementById("loveNote").classList.add("show");
+},3000);
+
+function openLoveNote(){
+document.getElementById("loveNote").classList.remove("show");
+alert("💌 My dearest Bhavani,\nYou are my heartbeat ❤️");
+explode(canvas.width/2,canvas.height/4);
+}
+
+/* Timer (CHANGE DATE) */
+const startDate=new Date("2020-11-25");
+
+function updateTimer(){
+const now=new Date();
+const diff=now-startDate;
+const days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("timer").innerHTML=
+"💞 Together for "+days+" days";
+}
+setInterval(updateTimer,1000);
+updateTimer();
+
+/* Typing */
+const loveMessage=
+"You are my happiness, my peace, and my forever. Every heartbeat of mine belongs to you, Bhavani 💖";
+
+let typeIndex=0;
+
+function typeText(){
+if(typeIndex<loveMessage.length){
+document.getElementById("typingText").innerHTML+=loveMessage.charAt(typeIndex);
+typeIndex++;
+setTimeout(typeText,60);
+}
+}
+setTimeout(typeText,2000);
+
+/* Beat Sync */
+const music=document.getElementById("bgMusic");
+const app=document.querySelector(".app");
+
+music.addEventListener("play",()=>{
+app.classList.add("beat");
+});
+music.addEventListener("pause",()=>{
+app.classList.remove("beat");
+});
+
+/* Surprise */
+function showSurprise(){
+alert("💖 You are my forever, Bhavani 😘❤️");
+explode(canvas.width/2,canvas.height/2);
+}
+
+/* Proposal */
+function showProposal(){
+document.getElementById("proposal").style.display="block";
+explode(canvas.width/2,canvas.height/3);
+}
+
+function closeProposal(){
+document.getElementById("proposal").style.display="none";
+alert("😍 I Love You Forever 💖");
+explode(canvas.width/2,canvas.height/2);
+}
+
+/* Quiz */
+let qIndex=0;
+
+const quiz=[
+{q:"When did I fall in love with you? ❤️",a:["First day 😍","Later 💕","Always 💖"],c:3},
+{q:"What do I love most? 💫",a:["Smile 😊","Heart ❤️","Everything 😘"],c:3},
+{q:"You are my...? 💍",a:["Wife 💕","Friend 😍","Forever ❤️"],c:3}
+];
+
+function openQuiz(){
+qIndex=0;
+document.getElementById("quiz").style.display="block";
+showQuestion();
+explode(canvas.width/2,canvas.height/3);
+}
+
+function showQuestion(){
+const q=quiz[qIndex];
+question.innerText=q.q;
+a1.innerText=q.a[0];
+a2.innerText=q.a[1];
+a3.innerText=q.a[2];
+}
+
+function answer(n){
+if(n===quiz[qIndex].c){
+explode(Math.random()*canvas.width,Math.random()*canvas.height/2);
+}
+qIndex++;
+
+if(qIndex<quiz.length){
+showQuestion();
+}else{
+document.getElementById("quiz").style.display="none";
+alert("🎉 You won my heart forever ❤️😘");
+explode(canvas.width/2,canvas.height/2);
+}
+}
+
+/* Chat */
+const chats=[
+{from:"me",text:"Hey Bhavani ❤️"},
+{from:"her",text:"Hello 😘"},
+{from:"me",text:"Do you know how much I love you? 💖"},
+{from:"her",text:"More than anything 😍"},
+{from:"me",text:"You are my forever 🥹❤️"},
+{from:"her",text:"Always with you 💕"},
+{from:"me",text:"Happy Valentine’s Day 🌹"},
+{from:"her",text:"Love you so much 😘💖"}
+];
+
+let chatIndex=0;
+
+function openChat(){
+
+document.getElementById("chat").style.display="block";
+document.getElementById("chatBox").innerHTML="";
+chatIndex=0;
+
+showChat();
+}
+
+function showChat(){
+
+if(chatIndex>=chats.length)return;
+
+const msg=chats[chatIndex];
+const box=document.getElementById("chatBox");
+
+const div=document.createElement("div");
+
+div.style.margin="6px 0";
+div.style.padding="8px 12px";
+div.style.borderRadius="10px";
+div.style.maxWidth="80%";
+
+if(msg.from==="me"){
+div.style.background="#dcf8c6";
+div.style.marginLeft="auto";
+div.style.color="#000";
+}else{
+div.style.background="#333";
+div.style.color="#fff";
+}
+
+div.innerText=msg.text;
+
+box.appendChild(div);
+box.scrollTop=box.scrollHeight;
+
+chatIndex++;
+
+setTimeout(showChat,1000);
+}
+
+function closeChat(){
+document.getElementById("chat").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
